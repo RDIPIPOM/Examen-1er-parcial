@@ -1,10 +1,16 @@
 document.querySelector('#btnOK').addEventListener('click', () => {
-    for (let i = 1; i < 3000; i++) {
-        //isAHappyNumber();
+    let suma = new Array();
+    for (let i = 0; i < 3000; i++) {
+        suma[i] = sumaDivisors(getDivisors(i + 1));
     }
 
-    console.log(sumaDivisors(getDivisors(220)));
-    console.log(sumaDivisors(getDivisors(284)));
+    for (let i = 0; i < 3000; i++) {
+        for (let z = 0; z < 3000; z++) {
+            if (suma[z] === (i + 1) && suma[i] === (z + 1) && z != i) {
+                console.log((i + 1) + ':' + (z + 1));
+            }
+        }
+    }
 });
 
 function isAHappyNumber(number1, number2) {
@@ -20,7 +26,7 @@ function isAHappyNumber(number1, number2) {
 function getDivisors(number) {
     let divisors = new Array();
     for (let i = 1; i < number; i++) {
-        if(number % i === 0){
+        if (number % i === 0) {
             divisors.push(i);
         }
     }
